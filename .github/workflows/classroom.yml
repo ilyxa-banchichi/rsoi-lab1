@@ -10,7 +10,24 @@ env:
   APP_PATH: /home/${{ secrets.SSH_USER_NAME }}/lab1
 
 jobs:
+  build_and_tests:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup dotnet
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '8.0'
+    - name: Install dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build
+    - name: Test with the dotnet CLI
+      run: dotnet test
+
   publish:
+    needs: build_and_tests
     runs-on: ubuntu-latest
 
     steps:
