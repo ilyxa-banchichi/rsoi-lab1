@@ -19,16 +19,12 @@ jobs:
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: '8.0'
-    - name: Go to solution directory
-      run: cd src/PersonService
-    - name: Test
-      run: pwd
     - name: Install dependencies
-      run: dotnet restore
+      run: dotnet restore ./src/PersonService
     - name: Build
-      run: dotnet build
+      run: dotnet build ./src/PersonService
     - name: Test with the dotnet CLI
-      run: dotnet test
+      run: dotnet test ./src/PersonService
 
   publish:
     needs: build_and_tests
