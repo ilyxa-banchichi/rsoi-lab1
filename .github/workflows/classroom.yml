@@ -20,7 +20,7 @@ jobs:
       with:
         dotnet-version: '8.0'
     - name: Go to solution directory
-    - run: cd ./src/PersonService
+      run: cd ./src/PersonService
     - name: Install dependencies
       run: dotnet restore
     - name: Build
