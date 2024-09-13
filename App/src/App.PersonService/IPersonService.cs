@@ -5,8 +5,8 @@ namespace App.PersonService;
 public interface IPersonService
 {
     IEnumerable<Person> GetAllPersons();
-    Person GetPerson(int id);
+    Person GetPerson(long id);
     Task<long> CreatePersonAsync(Person person);
-    Task DeletePersonAsync(int id);
+    Task DeletePersonAsync(long id);
     Task<Person> UpdatePersonAsync(Person person);
 }

@@ -18,7 +18,7 @@ public class PersonService : IPersonService
         return _personRepository.GetAll();
     }
     
-    public Person GetPerson(int id)
+    public Person GetPerson(long id)
     {
         var person = _personRepository.Get(id);
         return person ?? throw new NotFoundEntityByIdException($"{id}");;
@@ -29,7 +29,7 @@ public class PersonService : IPersonService
         return await _personRepository.CreateAsync(person);
     }
     
-    public async Task DeletePersonAsync(int id)
+    public async Task DeletePersonAsync(long id)
     {
         var success = await _personRepository.DeleteAsync(id);
         if (!success)

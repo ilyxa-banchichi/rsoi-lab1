@@ -29,9 +29,7 @@ public class PersonRepository : IPersonRepository
         return await Task.FromResult(person.Id);
     }
 
-    public Task<bool> DeleteAsync(long id) { throw new NotImplementedException(); }
-
-    public async Task<bool> Delete(long id)
+    public async Task<bool> DeleteAsync(long id)
     {
         var person = _db.Persons.FirstOrDefault(p => p.Id == id);
         if (person == null)
