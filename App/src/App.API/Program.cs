@@ -8,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddSwaggerGen(options =>
 {
     var basePath = AppContext.BaseDirectory;
-    var xmlPath = Path.Combine(basePath, "PersonService.xml");
+    var xmlPath = Path.Combine(basePath, "App.API.xml");
     options.IncludeXmlComments(xmlPath);
 });
 
