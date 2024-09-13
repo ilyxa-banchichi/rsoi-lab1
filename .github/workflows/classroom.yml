@@ -20,11 +20,11 @@ jobs:
       with:
         dotnet-version: '8.0'
     - name: Install dependencies
-      run: dotnet restore ./src/PersonService
+      run: dotnet restore ./App
     - name: Build
-      run: dotnet build ./src/PersonService
+      run: dotnet build ./App
     - name: Test with the dotnet CLI
-      run: dotnet test ./src/PersonService
+      run: dotnet test ./App
 
   publish:
     needs: build_and_tests
