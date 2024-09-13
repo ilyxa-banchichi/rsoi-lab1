@@ -47,6 +47,7 @@ jobs:
       env:
         BUILD_CONFIGURATION: ${{ env.BUILD_CONFIGURATION }}
       run: |
+        cd App/common
         docker compose build
         docker compose push
 
