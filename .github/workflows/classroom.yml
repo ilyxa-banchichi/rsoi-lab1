@@ -79,7 +79,7 @@ jobs:
         key: ${{ secrets.SSH_KEY }}
         passphrase: ${{ secrets.SSH_PASS }}
         port: 22
-        source: docker-compose.yml
+        source: App/common/docker-compose.yml
         target: ${{ env.APP_PATH }}
 
     - name: Start container
