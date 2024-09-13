@@ -4,7 +4,7 @@ services:
     image: ilyxabanchichi/rsoi-lab1-app:latest
     restart: always
     build:
-      context: ../
+      context: ./App/
       dockerfile: ./Dockerfile
       args:
         BUILD_CONFIGURATION: ${BUILD_CONFIGURATION}
