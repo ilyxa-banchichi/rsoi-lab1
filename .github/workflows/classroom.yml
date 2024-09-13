@@ -58,7 +58,7 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Remove old docker-compose file
+    - name: Clear app directory
       uses: appleboy/ssh-action@v1.0.3
       with:
         host: ${{ secrets.HOST }}
@@ -67,10 +67,10 @@ jobs:
         passphrase: ${{ secrets.SSH_PASS }}
         port: 22
         script: |
+          rm -rf ${{ env.APP_PATH }}
           mkdir -p ${{ env.APP_PATH }}
-          rm -f ${{ env.APP_PATH }}/docker-compose.yml
 
-    - name: Copy new docker-compose file
+    - name: Copy docker-compose file
       uses: appleboy/scp-action@v0.1.7
       with:
         host: ${{ secrets.HOST }}
@@ -79,6 +79,17 @@ jobs:
         passphrase: ${{ secrets.SSH_PASS }}
         port: 22
         source: ./docker-compose.yml
+        target: ${{ env.APP_PATH }}
+
+    - name: Copy postgres configs
+      uses: appleboy/scp-action@v0.1.7
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.SSH_USER_NAME }}
+        key: ${{ secrets.SSH_KEY }}
+        passphrase: ${{ secrets.SSH_PASS }}
+        port: 22
+        source: ./postgres
         target: ${{ env.APP_PATH }}
 
     - name: Start container
